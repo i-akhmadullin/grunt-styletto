@@ -8,7 +8,7 @@ Copy folder `grunt-styletto` to the `tasks` directory, relative to `grunt.js`
 
 Then load it from your own grunt.js file:
 
-`task.loadTasks('grunt-styletto');`
+`grunt.loadTasks('grunt-styletto');`
 
 ## Documentation
 
