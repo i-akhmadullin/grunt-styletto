@@ -16,11 +16,11 @@ module.exports = function(grunt) {
     var resolveFrom = config.resolveFrom;
 
     styletto(config, resolveFrom, function(err, result) {
-        if (err) throw err;
+        if (err) { throw err; }
         else if (result) {
           grunt.file.write(this.target, result);
         }
-        else console.log("\nFile: " + config.output + " saved!");
+        else { console.log("\nFile: " + config.output + " saved!"); }
     });
   });
 

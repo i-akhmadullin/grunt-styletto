@@ -1,0 +1,40 @@
+{
+  "name": "grunt-styletto",
+  "description": "The best sample grunt tasks ever.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/i-akhmadullin/grunt-styletto",
+  "author": {
+    "name": "ilya.akhmadullin",
+    "email": "ilya.akhmadullin@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:i-akhmadullin/grunt-styletto.git"
+  },
+  "bugs": {
+    "url": "git@github.com:i-akhmadullin/grunt-styletto.git/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/i-akhmadullin/grunt-styletto/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "grunt.js",
+  "bin": "bin/grunt-styletto",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt": "~0.3.9"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.9"
+  },
+  "keywords": [
+    "gruntplugin, styletto"
+  ]
+}
