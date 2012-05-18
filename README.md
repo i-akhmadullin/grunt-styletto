@@ -9,6 +9,21 @@ Then load it from your own grunt.js file:
 
 `grunt.loadNpmTasks('grunt-styletto');`
 
+## Usage
+Configure styletto task in `grunt.js` file like this:
+```
+styletto: {
+  config: {
+    input: "blocks/style.css",
+    output: "blocks/__style.css",
+    compress: "csso",
+    base64: 15000,
+    resolveFrom: ""
+  }
+},
+```
+Then you can run `grunt styletto` to compile `blocks/style.css` file with [styletto](https://github.com/iAdramelk/styletto)  
+
 ## Documentation
 
 This plugin provides only one task: `styletto`.  
