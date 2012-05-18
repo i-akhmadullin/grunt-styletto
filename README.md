@@ -3,12 +3,11 @@
 [Grunt](https://github.com/cowboy/grunt) plugin for processing CSS with [Styletto](https://github.com/iAdramelk/styletto)
 
 ## Getting Started
-<!-- Install the module with: `npm install grunt-css` -->
-Copy folder `grunt-styletto` to the `tasks` directory, relative to `grunt.js`
+Install the module with: `npm install grunt-styletto`  
 
 Then load it from your own grunt.js file:
 
-`grunt.loadTasks('grunt-styletto');`
+`grunt.loadNpmTasks('grunt-styletto');`
 
 ## Documentation
 
@@ -20,6 +19,6 @@ Currently this task is NOT a [multi task][types_of_tasks].
 ## Contributing
 Please use the issue tracker and pull requests.
 
-<!-- ## License
-Copyright (c) 2012 
-Licensed under the MIT license. -->
+## License
+Copyright (c) 2012 ilya.akhmadullin
+Licensed under the MIT license.
