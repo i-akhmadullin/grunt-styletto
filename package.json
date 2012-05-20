@@ -1,7 +1,7 @@
 {
   "name": "grunt-styletto",
-  "description": "The best sample grunt tasks ever.",
-  "version": "0.1.0",
+  "description": "Grunt plugin for processing CSS with Styletto",
+  "version": "0.1.1",
   "homepage": "https://github.com/i-akhmadullin/grunt-styletto",
   "author": {
     "name": "ilya.akhmadullin",
@@ -35,6 +35,6 @@
     "grunt": "~0.3.9"
   },
   "keywords": [
-    "gruntplugin, styletto"
+    "gruntplugin styletto"
   ]
 }
