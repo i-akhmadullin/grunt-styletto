@@ -8,22 +8,50 @@ module.exports = function(grunt) {
 
   var styletto = require("styletto");
 
-  grunt.registerTask('styletto', "Compile Stylus files with styletto.", function(target) {
-    this.requiresConfig('styletto.config');
+  grunt.registerMultiTask('styletto', 'Compile Stylus files with styletto.', function() {
+    // this.target === the name of the target
+    // this.data === the target's value in the config object
+    // this.name === the task name
+    // this.args === an array of args specified after the target on the command-line
+    // this.flags === a map of flags specified after the target on the command-line
+    // this.file === file-specific .src and .dest properties
+    var files = grunt.file.expandFiles( this.file.src );
+    var options = {
+      input:  this.file.src ,
+      output: this.file.dest,
+      compress: this.data.compress,
+      base64: this.data.base64,
+      resolveFrom: this.data.resolveFrom
+    }
 
-    var stylettoConfig = grunt.config('styletto.config');
-    var config = target ? [target] : stylettoConfig;
-    var resolveFrom = config.resolveFrom;
+    files.forEach(function( filepath ) {
+      var file = grunt.file.read( filepath );
 
-    styletto(config, resolveFrom, function(err, result) {
-        if (err) { throw err; }
-        else if (result) {
-          grunt.file.write(this.target, result);
-        }
-        else { console.log("\nFile: " + config.output + " saved!"); }
+      // skip empty files
+      if (file.length) {
+        grunt.helper('styletto', options);
+
+        // Fail task if errors were logged.
+        // if (this.errorCount) { return false; }
+
+        // grunt.file.write(options.output, res);
+      }
     });
+
   });
 
-// grunt.registerMultiTask("styletto", "Compile Stylus files with styletto.", function() {
-// });
+  // options should have key "input" with list of files to process
+  grunt.registerHelper('styletto', function(options) {
+
+    // grunt.log.writeln( options.input );
+    styletto(options, options.resolveFrom, function(err, result) {
+        if (err) { throw err; }
+        else if (result) {
+          // TODO return result string instead of saving file
+          grunt.file.write(options.output, result);
+        }
+        else { grunt.log.writeln("\nFile: " + options.output.yellow + " saved!".green); }
+    });
+  });
+  
 };

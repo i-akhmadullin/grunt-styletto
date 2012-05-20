@@ -3,19 +3,19 @@
 [Grunt](https://github.com/cowboy/grunt) plugin for processing CSS with [Styletto](https://github.com/iAdramelk/styletto)
 
 ## Getting Started
-Install the module with: `npm install grunt-styletto`  
+Install module in your project directory with: `npm install grunt-styletto`  
 
 Then load it from your own grunt.js file:
 
 `grunt.loadNpmTasks('grunt-styletto');`
 
 ## Usage
-Configure styletto task in `grunt.js` file like this:
+Add styletto task in `grunt.js` file like this:
 ```
 styletto: {
-  config: {
-    input: "blocks/style.css",
-    output: "blocks/__style.css",
+  all: {
+    src: "blocks/style.css",
+    dest: "blocks/__style.css",
     compress: "csso",
     base64: 15000,
     resolveFrom: ""
@@ -27,13 +27,37 @@ Then you can run `grunt styletto` to compile `blocks/style.css` file with [style
 ## Documentation
 
 This plugin provides only one task: `styletto`.  
-Currently this task is NOT a [multi task][types_of_tasks].
 
-[types_of_tasks]: https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md
+This task is a [multi task][types_of_tasks], so you can run styletto multiple times with different configs, like so:  
+  
+```
+styletto: {
+  dev: {
+    src: ['test/all.css'],
+    dest: "test/__all.css",
+    compress: 'csso',
+    base64: false,
+    resolveFrom: ""
+  },
+  publish: {
+    src: ['test/all.css'],
+    dest: "publish/__deploy.css",
+    compress: "yui",
+    base64: 15000,
+    resolveFrom: ""
+  }
+},
+```
+To run only one subtask run styletto from console like so: `grunt styletto:dev`  
+
+
 
 ## Contributing
 Please use the issue tracker and pull requests.
 
 ## License
-Copyright (c) 2012 ilya.akhmadullin
-Licensed under the MIT license.
+Copyright (c) 2012 ilya.akhmadullin  
+Licensed under the MIT license.  
+
+
+[types_of_tasks]: https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md

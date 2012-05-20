@@ -12,12 +12,19 @@ module.exports = function(grunt) {
       files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
     },
     styletto: {
-      config: {
-        "input": "test/all.css",
-        "output": "test/__all.css",
-        "compress": "csso",
-        "base64": 15000,
-        "resolveFrom": ""
+      basic: {
+        src: ['test/all.css'],
+        dest: "test/__all.css",
+        compress: 'csso',
+        base64: 15,
+        resolveFrom: ""
+      },
+      whatever: {
+        src: ['test/all.css'],
+        dest: "test/__whatever.css",
+        compress: "yui",
+        base64: false,
+        resolveFrom: ""
       }
     },
     watch: {
