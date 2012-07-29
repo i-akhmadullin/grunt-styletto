@@ -3,7 +3,9 @@
 [Grunt](https://github.com/cowboy/grunt) plugin for processing CSS with [Styletto](https://github.com/iAdramelk/styletto)
 
 ## Getting Started
-Install module in your project directory with: `npm install grunt-styletto`  
+Install styletto: `npm install styletto -g`  
+
+Install plugin in your project directory with: `npm install grunt-styletto`  
 
 Then load it from your own grunt.js file:
 
