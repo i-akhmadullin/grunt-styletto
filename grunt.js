@@ -16,15 +16,12 @@ module.exports = function(grunt) {
         src: ['test/all.css'],
         dest: "test/__all.css",
         compress: 'csso',
-        base64: 15,
-        resolveFrom: ""
+        base64: 15
       },
       whatever: {
         src: ['test/all.css'],
         dest: "test/__whatever.css",
-        compress: "yui",
-        base64: false,
-        resolveFrom: ""
+        compress: "yui"
       }
     },
     watch: {
