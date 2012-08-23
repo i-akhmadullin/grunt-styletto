@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/i-akhmadullin/grunt-styletto.png)](http://travis-ci.org/i-akhmadullin/grunt-styletto)
 # grunt-styletto
 
 [Grunt](https://github.com/cowboy/grunt) plugin for processing CSS with [Styletto](https://github.com/iAdramelk/styletto)
