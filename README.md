@@ -1,6 +1,6 @@
 # grunt-styletto
 
-[Grunt](https://github.com/cowboy/grunt) plugin for processing CSS with [Styletto](https://github.com/iAdramelk/styletto)
+[Grunt](https://github.com/cowboy/grunt) plugin for processing CSS with [Styletto](https://github.com/jetstyle/styletto)
 
 ## Getting Started
 Install styletto: `npm install styletto -g`  
@@ -24,7 +24,7 @@ styletto: {
   }
 },
 ```
-Then you can run `grunt styletto` to compile `blocks/style.css` file with [styletto](https://github.com/iAdramelk/styletto)  
+Then you can run `grunt styletto` to compile `blocks/style.css` file with [styletto](https://github.com/jetstyle/styletto)  
 
 ## Documentation
 
