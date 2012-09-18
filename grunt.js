@@ -2,7 +2,6 @@
 
 module.exports = function(grunt) {
 
-
   // Project configuration.
   grunt.initConfig({
     test: {
@@ -12,21 +11,37 @@ module.exports = function(grunt) {
       files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
     },
     styletto: {
-      basic: {
+      compress: {
         src: ['test/all.css'],
-        dest: "test/__all.css",
+        dest: "test/all.test.css",
         compress: 'csso',
-        base64: 15
+        base64: 15,
+        errors: {
+          // possible values: 'error', 'alert', 'ignore'
+          includes: 'alert',
+          resources: 'alert',
+          procesors: 'alert'
+        }
       },
-      whatever: {
+      raw: {
         src: ['test/all.css'],
-        dest: "test/__whatever.css",
-        compress: "yui"
+        dest: "test/all-raw.test.css",
+        errors: {
+          includes: 'alert',
+          resources: 'alert',
+          procesors: 'alert'
+        }
       }
     },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'default'
+      scripts: {
+        files: '<config:lint.files>',
+        tasks: 'default'
+      },
+      css: {
+        files: ['test/**/*.css', 'test/**/*.styl'],
+        tasks: 'styletto'
+      }
     },
     jshint: {
       options: {

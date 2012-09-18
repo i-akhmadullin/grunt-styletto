@@ -15,28 +15,36 @@ module.exports = function(grunt) {
     // this.args === an array of args specified after the target on the command-line
     // this.flags === a map of flags specified after the target on the command-line
     // this.file === file-specific .src and .dest properties
-    var files = grunt.file.expandFiles( this.file.src );
+    var files = grunt.file.expandFiles(this.file.src);
     var options = {
       input: files,
       output: this.file.dest,
       compress: this.data.compress,
       base64: this.data.base64,
-      resolveFrom: this.data.resolveFrom
+      path: this.data.path || "",
+      errors: this.data.errors || "alert"
     };
-
     grunt.helper('styletto', options);
   });
 
   // options should have key "input" with list of files to process
-  grunt.registerHelper('styletto', function(options) {
-    styletto(options, options.resolveFrom, function(err, result) {
-      if (err) { throw err; }
-      else if (result) {
-        // TODO return result string instead of saving file
-        grunt.file.write(options.output, result);
-      }
-      else {
-        grunt.log.writeln("\nFile: " + options.output.yellow + " saved!".green);
+  grunt.registerHelper('styletto', function(config) {
+    styletto(config, function(err, success, css) {
+      if (err) {
+        if (!success) {
+          grunt.log.error('\nFile was NOT saved because of following errors:\n\n' + err);
+        } else if (!css) {
+          grunt.log.error('\n' + err + '\nFile was saved to "' +config.output + '" with some warnings.\n');
+        } else {
+          grunt.log.error(err);
+          grunt.log.writeln(css);
+        }
+      } else if (success) {
+        if (!css) {
+          grunt.log.writeln('\nFile was succesfully saved to ' + config.output + '\n');
+        } else {
+          grunt.file.write(config.output, css);
+        }
       }
     });
   });
