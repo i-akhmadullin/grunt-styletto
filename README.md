@@ -20,7 +20,17 @@ styletto: {
     dest: "blocks/__style.css",
     compress: "csso",
     base64: 15000,
-    resolveFrom: ""
+    // possible values are: "error" , "alert", "ignore"
+    errors: "alert",
+    // same but with more control
+    // errors: {
+    //   includes: 'alert',
+    //   resources: 'alert',
+    //   processors: 'alert'
+    // },
+
+    // optional
+    // path: "../"
   }
 },
 ```
@@ -38,15 +48,14 @@ styletto: {
     src: ['test/all.css'],
     dest: "test/__all.css",
     compress: 'csso',
-    base64: false,
-    resolveFrom: ""
+    errors: "alert"
   },
   publish: {
     src: ['test/all.css'],
     dest: "publish/__deploy.css",
     compress: "yui",
     base64: 15000,
-    resolveFrom: ""
+    errors: "alert"
   }
 },
 ```

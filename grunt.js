@@ -16,20 +16,20 @@ module.exports = function(grunt) {
         dest: "test/all.test.css",
         compress: 'csso',
         base64: 15,
-        errors: {
-          // possible values: 'error', 'alert', 'ignore'
-          includes: 'alert',
-          resources: 'alert',
-          procesors: 'alert'
-        }
+        errors: "alert"
+        // errors: {
+        //   includes: 'alert',
+        //   resources: 'alert',
+        //   processors: 'alert'
+        // }
       },
       raw: {
         src: ['test/all.css'],
         dest: "test/all-raw.test.css",
         errors: {
-          includes: 'alert',
-          resources: 'alert',
-          procesors: 'alert'
+          includes: 'error',
+          resources: 'error',
+          processors: 'error'
         }
       }
     },

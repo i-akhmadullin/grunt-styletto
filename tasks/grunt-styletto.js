@@ -22,8 +22,20 @@ module.exports = function(grunt) {
       compress: this.data.compress,
       base64: this.data.base64,
       path: this.data.path || "",
-      errors: this.data.errors || "alert"
+      errors: this.data.errors || "alert",
+      'errors-processors': this.data.errors.processors || "alert",
+      'errors-includes': this.data.errors.includes || "alert",
+      'errors-resources': this.data.errors.resources || "alert"
     };
+    var errorLevel = this.data.errors;
+    if (errorLevel === "alert" || errorLevel === "error" || errorLevel === "ignore") {
+      options['errors-processors'] = errorLevel;
+      options['errors-includes'] = errorLevel;
+      options['errors-resources'] = errorLevel;
+    }
+    if (this.data.resolveFrom) {
+      grunt.warn('You are using old styletto config in grunt.js file. Please update styletto, grunt-styletto and use latest grunt.js config.');
+    }
     grunt.helper('styletto', options);
   });
 
