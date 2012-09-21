@@ -24,13 +24,13 @@ module.exports = function(grunt) {
       path: this.data.path || "",
       errors: this.data.errors || "alert",
       'errors-processors': this.data.errors.processors || "alert",
-      'errors-includes': this.data.errors.includes || "alert",
+      'errors-imports': this.data.errors.imports || "alert",
       'errors-resources': this.data.errors.resources || "alert"
     };
     var errorLevel = this.data.errors;
     if (errorLevel === "alert" || errorLevel === "error" || errorLevel === "ignore") {
       options['errors-processors'] = errorLevel;
-      options['errors-includes'] = errorLevel;
+      options['errors-imports'] = errorLevel;
       options['errors-resources'] = errorLevel;
     }
     if (this.data.resolveFrom) {

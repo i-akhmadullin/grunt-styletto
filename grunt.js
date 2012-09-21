@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         base64: 15,
         errors: "alert"
         // errors: {
-        //   includes: 'alert',
+        //   imports: 'alert',
         //   resources: 'alert',
         //   processors: 'alert'
         // }
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         src: ['test/all.css'],
         dest: "test/all-raw.test.css",
         errors: {
-          includes: 'error',
+          imports: 'error',
           resources: 'error',
           processors: 'error'
         }

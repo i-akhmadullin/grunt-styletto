@@ -24,7 +24,7 @@ styletto: {
     errors: "alert",
     // same but with more control
     // errors: {
-    //   includes: 'alert',
+    //   imports: 'alert',
     //   resources: 'alert',
     //   processors: 'alert'
     // },
