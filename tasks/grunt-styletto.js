@@ -41,14 +41,15 @@ module.exports = function(grunt) {
 
   // options should have key "input" with list of files to process
   grunt.registerHelper('styletto', function(config) {
+    var beep = '\x07'; // Beep!
     styletto(config, function(err, success, css) {
       if (err) {
         if (!success) {
-          grunt.log.error('\nFile was NOT saved because of following errors:\n\n' + err);
+          grunt.log.error('\nFile was NOT saved because of following errors:\n\n' + err + beep);
         } else if (!css) {
-          grunt.log.error('\n' + err + '\nFile was saved to "' +config.output + '" with some warnings.\n');
+          grunt.log.error('\n' + err + '\nFile was saved to "' +config.output + '" with some warnings.\n' + beep);
         } else {
-          grunt.log.error(err);
+          grunt.log.error(err + beep);
           grunt.log.writeln(css);
         }
       } else if (success) {
