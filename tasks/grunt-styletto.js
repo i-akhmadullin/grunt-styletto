@@ -7,6 +7,7 @@
 module.exports = function(grunt) {
 
   var styletto = require("styletto");
+  var beep = '\x07'; // Beep!
 
   grunt.registerMultiTask('styletto', 'Compile Stylus files with styletto.', function() {
     // this.target === the name of the target
@@ -22,10 +23,7 @@ module.exports = function(grunt) {
       compress: this.data.compress,
       base64: this.data.base64,
       path: this.data.path || "",
-      errors: this.data.errors || "alert",
-      'errors-processors': this.data.errors.processors || "alert",
-      'errors-imports': this.data.errors.imports || "alert",
-      'errors-resources': this.data.errors.resources || "alert"
+      errors: this.data.errors || "alert"
     };
     var errorLevel = this.data.errors;
     if (errorLevel === "alert" || errorLevel === "error" || errorLevel === "ignore") {
@@ -41,7 +39,6 @@ module.exports = function(grunt) {
 
   // options should have key "input" with list of files to process
   grunt.registerHelper('styletto', function(config) {
-    var beep = '\x07'; // Beep!
     styletto(config, function(err, success, css) {
       if (err) {
         if (!success) {
