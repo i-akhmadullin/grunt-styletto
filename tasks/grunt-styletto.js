@@ -6,7 +6,7 @@
 
 module.exports = function(grunt) {
 
-  var styletto = require("styletto");
+  var styletto = require('styletto');
   var beep = '\x07'; // Beep!
 
   grunt.registerMultiTask('styletto', 'Compile Stylus files with styletto.', function() {
@@ -20,13 +20,13 @@ module.exports = function(grunt) {
     var options = {
       input: files,
       output: this.file.dest,
-      compress: this.data.compress,
-      base64: this.data.base64,
-      path: this.data.path || "",
-      errors: this.data.errors || "alert"
+      compress: this.data.compress || '',
+      base64: this.data.base64 || '',
+      path: this.data.path || '',
+      errors: this.data.errors || 'alert'
     };
     var errorLevel = this.data.errors;
-    if (errorLevel === "alert" || errorLevel === "error" || errorLevel === "ignore") {
+    if (errorLevel === 'alert' || errorLevel === 'error' || errorLevel === 'ignore') {
       options['errors-processors'] = errorLevel;
       options['errors-imports'] = errorLevel;
       options['errors-resources'] = errorLevel;
@@ -58,5 +58,4 @@ module.exports = function(grunt) {
       }
     });
   });
-
 };

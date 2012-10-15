@@ -12,11 +12,11 @@ module.exports = function(grunt) {
     },
     styletto: {
       compress: {
-        src: ['test/all.css'],
-        dest: "test/all.test.css",
+        src: 'test/all.css',
+        dest: 'test/all.test.css',
         compress: 'csso',
         base64: 15,
-        errors: "alert"
+        errors: 'alert'
         // errors: {
         //   imports: 'alert',
         //   resources: 'alert',
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       },
       raw: {
         src: ['test/all.css'],
-        dest: "test/all-raw.test.css",
+        dest: 'test/all-raw.test.css',
         errors: {
           imports: 'error',
           resources: 'error',
@@ -65,6 +65,5 @@ module.exports = function(grunt) {
   // Load local tasks.
   grunt.loadTasks('tasks');
   // Default task (only for this example).
-  grunt.registerTask("default", "lint");
-
+  grunt.registerTask('default', 'lint');
 };
