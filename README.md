@@ -1,6 +1,6 @@
 # grunt-styletto
 
-[Grunt](https://github.com/cowboy/grunt) plugin for processing CSS with [Styletto](https://github.com/jetstyle/styletto)
+[Grunt](https://github.com/gruntjs/grunt) plugin for processing CSS with [Styletto](https://github.com/jetstyle/styletto)
 
 ## Getting Started
 Install styletto: `npm install styletto -g`  
@@ -71,4 +71,4 @@ Copyright (c) 2012 ilya.akhmadullin
 Licensed under the MIT license.  
 
 
-[types_of_tasks]: https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md
+[types_of_tasks]: https://github.com/gruntjs/grunt/blob/master/docs/types_of_tasks.md
