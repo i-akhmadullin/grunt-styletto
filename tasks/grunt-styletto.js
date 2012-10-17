@@ -20,8 +20,8 @@ module.exports = function(grunt) {
     var options = {
       input: files,
       output: this.file.dest,
-      compress: this.data.compress || '',
-      base64: this.data.base64 || '',
+      compress: this.data.compress,
+      base64: this.data.base64,
       path: this.data.path || '',
       errors: this.data.errors || 'alert'
     };
