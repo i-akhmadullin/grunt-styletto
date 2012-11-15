@@ -5,6 +5,7 @@
  */
 
 module.exports = function(grunt) {
+  'use strict';
 
   var styletto = require('styletto');
   var beep = '\x07'; // Beep!
@@ -23,7 +24,8 @@ module.exports = function(grunt) {
       compress: this.data.compress,
       base64: this.data.base64,
       path: this.data.path || '',
-      errors: this.data.errors || 'alert'
+      errors: this.data.errors || 'alert',
+      nib: this.data.nib || 'vendor'
     };
     var errorLevel = this.data.errors;
     if (errorLevel === 'alert' || errorLevel === 'error' || errorLevel === 'ignore') {

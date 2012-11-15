@@ -21,6 +21,8 @@ styletto: {
     compress: "csso",
     base64: 15000,
     // possible values are: "error" , "alert", "ignore"
+    // more info about config params
+    // @see https://github.com/jetstyle/styletto/blob/master/README.md
     errors: "alert",
     // same but with more control
     // errors: {
@@ -28,6 +30,7 @@ styletto: {
     //   resources: 'alert',
     //   processors: 'alert'
     // },
+    nib: 'vendor',
 
     // optional
     // path: "../"
