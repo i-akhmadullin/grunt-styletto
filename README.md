@@ -16,13 +16,23 @@ Add styletto task in `grunt.js` file like this:
 ```
 styletto: {
   all: {
+
+    // path to input file or array of paths
     src: "blocks/style.css",
+
+    // path to result file
     dest: "blocks/__style.css",
+
+    // optional params, @see for syntax and default settings https://github.com/jetstyle/styletto/blob/master/README.md
     compress: "csso",
-    base64: 15000,
-    // possible values are: "error" , "alert", "ignore"
-    // more info about config params
-    // @see https://github.com/jetstyle/styletto/blob/master/README.md
+    base64: 1500,
+    // same but with more control
+    //base64: {
+    //    limit: 1500,
+    //    types: {
+    //        'jpeg': 'image/jpeg'
+    //    }
+    //},
     errors: "alert",
     // same but with more control
     // errors: {
@@ -30,10 +40,7 @@ styletto: {
     //   resources: 'alert',
     //   processors: 'alert'
     // },
-    nib: 'vendor',
-
-    // optional
-    // path: "../"
+    path: "../"
   }
 },
 ```
