@@ -16,8 +16,8 @@ module.exports = function(grunt) {
 
         var options = this.data;
 
-        options.src  = grunt.file.expandFiles( this.file.src );
-        options.dest = this.file.dest;
+        options.src  = grunt.file.expand( this.data.src );
+        options.dest = this.data.dest;
         options.path = this.data.path || process.cwd();
 
         if (this.data.resolveFrom) {
