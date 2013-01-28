@@ -14,15 +14,21 @@ module.exports = function (grunt) {
 
         var done = this.async();
 
-        var options  = Object.create(this.data);
+        var options  = grunt.utils._.clone(this.data);
 
         options.src  = grunt.file.expandFiles( this.file.src );
         options.dest = this.file.dest;
         options.path = this.data.path || process.cwd();
 
-        if (this.data.resolveFrom) {
-            grunt.warn('You are using old styletto config in grunt.js file. Please update styletto, grunt-styletto and use latest grunt.js config.');
+        if (options.stylus && options.stylus.imports) {
+            options.stylus.imports = grunt.file.expandFiles( options.stylus.imports );
         }
+
+        if (options.less && options.less.imports) {
+            options.less.imports = grunt.file.expandFiles( options.less.imports );
+        }
+
+        console.log(options);
 
         var beep = '\x07'; // Beep!
 
@@ -48,7 +54,7 @@ module.exports = function (grunt) {
 
             else if ( result.success ) {
 
-                console.log( '\nFile was succesfully saved to ' + options.output + '\n\nDone in ' + end + 'ms.' );
+                console.log( '\nFile was succesfully saved to ' + options.dest + '\n\nDone in ' + end + 'ms.' );
 
             }
 

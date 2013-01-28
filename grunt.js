@@ -14,9 +14,12 @@ module.exports = function(grunt) {
       compress: {
         src: 'test/all.css',
         dest: 'test/all.test.css',
-        compress: 'csso',
+        compress: 'yui',
         base64: 15,
-        errors: 'alert'
+        errors: 'alert',
+        stylus: {
+            imports: [ 'test/**/*.styl' ]
+        }
         // errors: {
         //   imports: 'alert',
         //   resources: 'alert',
