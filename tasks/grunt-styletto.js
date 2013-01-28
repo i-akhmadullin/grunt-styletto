@@ -4,20 +4,20 @@
  * This work is public domain.
  */
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-"use strict";
+    "use strict";
 
     var styletto = require("styletto");
 
-    grunt.registerMultiTask('styletto', 'Compile Stylus files with styletto.', function() {
+    grunt.registerMultiTask('styletto', 'Compile Stylus files with styletto.', function () {
 
         var done = this.async();
 
-        var options = this.data;
+        var options  = Object.create(this.data);
 
-        options.src  = grunt.file.expand( this.data.src );
-        options.dest = this.data.dest;
+        options.src  = grunt.file.expandFiles( this.file.src );
+        options.dest = this.file.dest;
         options.path = this.data.path || process.cwd();
 
         if (this.data.resolveFrom) {
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 
                 } else {
 
-                    console.error( '\n' + err + '\nFile was saved to "' + options.output + '" with some warnings.\n\nDone in ' + end + 'ms.' );
+                    console.error( '\n' + err + '\nFile was saved to "' + options.dest + '" with some warnings.\n\nDone in ' + end + 'ms.' );
 
                 }
 
