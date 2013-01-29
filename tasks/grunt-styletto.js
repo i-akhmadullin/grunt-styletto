@@ -12,9 +12,11 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('styletto', 'Compile Stylus files with styletto.', function () {
 
-        var done = this.async();
-
-        var options  = grunt.utils._.clone(this.data);
+        var done = this.async(),
+            options  = grunt.utils._.clone( this.data ),
+            beep = '\x07',
+            start = Date.now(),
+            end;
 
         options.src  = grunt.file.expandFiles( this.file.src );
         options.dest = this.file.dest;
@@ -28,15 +30,9 @@ module.exports = function (grunt) {
             options.less.imports = grunt.file.expandFiles( options.less.imports );
         }
 
-        console.log(options);
-
-        var beep = '\x07'; // Beep!
-
-        var start = Date.now();
-
         styletto( options, function( err, result ) {
 
-            var end = ( Date.now() - start );
+            end = Date.now() - start;
 
             if ( err ) {
 
@@ -46,7 +42,7 @@ module.exports = function (grunt) {
 
                 } else {
 
-                    console.error( '\n' + err + '\nFile was saved to "' + options.dest + '" with some warnings.\n\nDone in ' + end + 'ms.' );
+                    console.error( '\n' + err + '\nFile was saved to "' + options.dest + '" with some warnings. Done in ' + end + 'ms.' );
 
                 }
 
@@ -54,7 +50,7 @@ module.exports = function (grunt) {
 
             else if ( result.success ) {
 
-                console.log( '\nFile was succesfully saved to ' + options.dest + '\n\nDone in ' + end + 'ms.' );
+                console.log( '\nFile was succesfully saved to "' + options.dest + '". Done in ' + end + 'ms.' );
 
             }
 
