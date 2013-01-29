@@ -1,58 +1,75 @@
 /*
  * styletto task for grunt
- * Copyright (c) 2012
+ * Copyright (c) 2012-2013
  * This work is public domain.
  */
 
-module.exports = function(grunt) {
+module.exports = function ( grunt ) {
 
-"use strict";
+    "use strict";
 
-    var styletto = require("styletto");
+    var styletto = require( "styletto" );
 
-    grunt.registerMultiTask('styletto', 'Compile Stylus files with styletto.', function() {
+    grunt.registerMultiTask( 'styletto', 'Compile Stylus files with styletto.', function () {
 
-        var done = this.async();
+        var done = this.async(),
+            options  = this.options({ path: process.cwd() }),
+            beep = '\x07';
 
-        var options = this.data;
+        var iteratorFunction = function ( f, callback ) {
 
-        options.src  = grunt.file.expand( this.data.src );
-        options.dest = this.data.dest;
-        options.path = this.data.path || process.cwd();
+            var config = grunt.util._.clone( options ),
+            start = Date.now(),
+            end;
 
-        if (this.data.resolveFrom) {
-            grunt.warn('You are using old styletto config in grunt.js file. Please update styletto, grunt-styletto and use latest grunt.js config.');
-        }
+            config.src  = f.src;
+            config.dest = f.dest;
 
-        var beep = '\x07'; // Beep!
+            if ( config.stylus && config.stylus.imports ) {
 
-        var start = Date.now();
+                config.stylus.imports = grunt.file.expand( config.stylus.imports );
 
-        styletto( options, function( err, result ) {
+            }
 
-            var end = ( Date.now() - start );
+            if ( config.less && config.less.imports ) {
 
-            if ( err ) {
+                config.less.imports = grunt.file.expand( config.less.imports );
 
-                if ( !result.success ) {
+            }
 
-                    console.error( '\nFile was NOT saved because of following errors:\n\n' + err );
+            styletto( config, function( err, result ) {
 
-                } else {
+                end = ( Date.now() - start );
 
-                    console.error( '\n' + err + '\nFile was saved to "' + options.output + '" with some warnings.\n\nDone in ' + end + 'ms.' );
+                if ( err ) {
+
+                    if ( !result.success ) {
+
+                        console.error( '\nFile was NOT saved because of following errors:\n\n' + err );
+
+                    } else {
+
+                        console.error( '\n' + err + '\nFile was saved to "' + config.dest + '" with some warnings. Done in ' + end + 'ms.' );
+
+                    }
 
                 }
 
-            }
+                else if ( result.success ) {
 
-            else if ( result.success ) {
+                    console.log( '\nFile was succesfully saved to "' + config.dest + '". Done in ' + end + 'ms.' );
 
-                console.log( '\nFile was succesfully saved to ' + options.output + '\n\nDone in ' + end + 'ms.' );
+                }
 
-            }
+                callback();
 
-            done();
+            } );
+
+        };
+
+        grunt.util.async.forEach( this.files, iteratorFunction, function( err ) {
+
+            done( err );
 
         } );
 

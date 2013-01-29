@@ -33,6 +33,14 @@ styletto: {
     //        'jpeg': 'image/jpeg'
     //    }
     //},
+    stylus: {
+        variables: { "ie": true },
+        imports: [ 'mixin1.styl', 'mixin2.styl' ]
+    },
+    less: {
+        variables: { "bg-color": "red" },
+        imports: [ 'lesshat.less' ]
+    },
     errors: "alert",
     // same but with more control
     // errors: {
