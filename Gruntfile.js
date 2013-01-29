@@ -9,20 +9,27 @@ module.exports = function(grunt) {
     grunt.initConfig({
         styletto: {
             compress: {
-                src: 'test/all.css',
-                dest: 'test/all.test.css',
-                compress: 'yui',
-                base64: 15,
-                errors: 'alert'
+                files: { 'test/all.css': 'test/all.test.css' },
+                options: {
+                    compress: false,
+                    base64: 15,
+                    errors: 'alert'
+                }
             },
             raw: {
                 src: ['test/all.css', 'test/includes-search.css'],
                 dest: 'test/all-raw.test.css',
-                errors: {
-                    imports: 'error',
-                    resources: 'error',
-                    processors: 'error'
+                options: {
+                    errors: {
+                        imports: 'error',
+                        resources: 'error',
+                        processors: 'error'
+                    }
                 }
+            },
+            options: {
+                base64: false,
+                compress: false
             }
         },
         jshint: {
