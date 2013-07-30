@@ -1,7 +1,7 @@
 {
   "name": "grunt-styletto",
   "description": "Grunt plugin for processing CSS with Styletto",
-  "version": "0.3.2-2",
+  "version": "0.4.1",
   "homepage": "https://github.com/i-akhmadullin/grunt-styletto",
   "author": {
     "name": "Ilya Akhmadullin",
@@ -21,16 +21,18 @@
   "main": "grunt.js",
   "bin": "bin/grunt-styletto",
   "engines": {
-    "node": "0.8"
+    "node": "0.8",
+    "node": "0.10"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt"
   },
   "dependencies": {
-    "styletto": "~0.4.3"
+    "styletto": "~0.4.5"
   },
   "devDependencies": {
-    "grunt": "~0.3.9"
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "*"
   },
   "keywords": [
     "gruntplugin",
