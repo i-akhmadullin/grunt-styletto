@@ -24,6 +24,7 @@ module.exports = function ( grunt ) {
 
             config.src  = f.src;
             config.dest = f.dest;
+            config.base64 = f.base64;
 
             if ( config.stylus && config.stylus.imports ) {
 
