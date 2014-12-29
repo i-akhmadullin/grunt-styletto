@@ -17,38 +17,41 @@ Add styletto task in `grunt.js` file like this:
 styletto: {
   all: {
 
+    // optional params, @see for syntax and default settings https://github.com/jetstyle/styletto/blob/master/README.md
+    options: {
+      compress: "csso",
+      base64: 1500,
+      // same but with more control
+      //base64: {
+      //    limit: 1500,
+      //    types: {
+      //        'jpeg': 'image/jpeg'
+      //    }
+      //},
+      stylus: {
+          variables: { "ie": true },
+          imports: [ 'mixin1.styl', 'mixin2.styl' ]
+      },
+      less: {
+          variables: { "bg-color": "red" },
+          imports: [ 'lesshat.less' ]
+      },
+      errors: "alert",
+      // same but with more control
+      // errors: {
+      //   imports: 'alert',
+      //   resources: 'alert',
+      //   processors: 'alert'
+      // },
+      path: "../"
+    }
+
     // path to input file or array of paths
     src: "blocks/style.css",
 
     // path to result file
     dest: "blocks/__style.css",
 
-    // optional params, @see for syntax and default settings https://github.com/jetstyle/styletto/blob/master/README.md
-    compress: "csso",
-    base64: 1500,
-    // same but with more control
-    //base64: {
-    //    limit: 1500,
-    //    types: {
-    //        'jpeg': 'image/jpeg'
-    //    }
-    //},
-    stylus: {
-        variables: { "ie": true },
-        imports: [ 'mixin1.styl', 'mixin2.styl' ]
-    },
-    less: {
-        variables: { "bg-color": "red" },
-        imports: [ 'lesshat.less' ]
-    },
-    errors: "alert",
-    // same but with more control
-    // errors: {
-    //   imports: 'alert',
-    //   resources: 'alert',
-    //   processors: 'alert'
-    // },
-    path: "../"
   }
 },
 ```
