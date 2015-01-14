@@ -42,8 +42,12 @@ module.exports = function ( grunt ) {
                 end = ( Date.now() - start );
 
                 if ( err ) {
+            options.stylus.imports = grunt.file.expandFiles( options.stylus.imports );
+        }
 
+        if (options.less && options.less.imports) {
                     if ( !result.success ) {
+        }
 
                         console.error( '\nFile was NOT saved because of following errors:\n\n' + err );
 
